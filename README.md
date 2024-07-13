@@ -1,24 +1,58 @@
 # create-next-sitemap-docs
 
-Generate comprehensive sitemap documentation for your Next.js projects, including a downloadable SVG graph, detailed route map with accompanying .md documentation, and full support for the app router. This tool is designed to help developers easily visualize and document the structure of their Next.js applications, making it simpler to understand and maintain their projects. Whether you are working on a small project or a large application, `create-next-sitemap-docs` provides a clear and organized representation of your app's routing structure.
+Generate detailed sitemap documentation for your Next.js projects that use the app router. This tool creates a comprehensive HTML file featuring a visual map of your routing architecture along with detailed route documentation. It is designed to maintain scalable documentation compatible with the app router by leveraging the same system and requiring users to have a `page.md` or `route.md` file in the same directory as their Next.js `page` or `route` files. Ideal for both small projects and large applications, `create-next-sitemap-docs` helps you visualize and maintain your app's routing structure effectively.
 
 ![Banner](./assets/banner.gif)
 
-## Installation
+## Usage
 
-You can install this package via npm:
+### Using npx
 
-```sh
-npm install -g create-next-sitemap-docs
-```
-
-Or use it directly with `npx`:
+You can use the tool directly without installation via `npx`:
 
 ```sh
 npx create-next-sitemap-docs --appPath "./src/app/" --outputPath "./docs"
 ```
 
-## Usage
+### Recommended Method: Adding to package.json Scripts
+
+The recommended way to use this tool is by adding it to the `scripts` section of your `package.json`. This allows you to easily run the tool as part of your project's workflow.
+
+#### Example of Adding to package.json with Additional Parameters
+
+```json
+{...
+  "scripts": {
+    ...,
+    "generate:sitemap": "npx create-next-sitemap-docs --appPath "./src/app/" --outputPath "./docs" --pageTitle "My Project Sitemap" --fontSize 24 --boxWidth 250 --boxHeight 60"
+    ...,
+  }
+...}
+```
+
+#### Running the Script
+
+After adding the script to your `package.json`, you can run it using:
+
+```sh
+npm run generate:sitemap
+```
+
+or
+
+```sh
+yarn generate:sitemap
+```
+
+### Command Line Usage
+
+When you run the tool from the command line, it will recursively search through the directory specified in `appPath` to find all `page` and `route` files used by the Next.js app router (`page.tsx`, `page.jsx`, `page.js`, `route.tsx`, `route.jsx`, `route.js`). Once it identifies these files, it generates an HTML file that visually maps out the routing architecture of your application. This visual map helps in understanding the structure and flow of your app's routes.
+
+### Markdown Documentation
+
+For each `page` or `route` file, if there is a corresponding `page.md` or `route.md` file in the same directory, the tool will automatically include the content of these markdown files in the generated HTML documentation. This ensures that the visual representation of the routing architecture is accompanied by detailed and specific documentation, making it easier to understand and navigate your codebase.
+
+If the `onlyMarkdownFiles` option is set to `true`, only the routes or pages that have a corresponding `.md` file will be documented. If set to `false` (the default), the tool will use the entire content of the route file (e.g., `page.tsx`) in the documentation, ensuring that all routes are included even if no markdown file is present.
 
 ### Config Options
 
@@ -46,10 +80,10 @@ npx create-next-sitemap-docs --appPath "./src/app/" --outputPath "./docs"
 ## Example
 
 ```sh
-npx create-next-sitemap-docs --appPath "./src/app/(webapp)" --outputPath "./scripts/sitemap.html" --pageTitle "CONDOR DIGITAL SOLUTIONS"
+npx create-next-sitemap-docs --appPath "./src/app" --outputPath "./scripts/sitemap.html" --pageTitle "CONDOR DIGITAL SOLUTIONS"
 ```
 
-This will generate an HTML file with a sitemap including a downloadable SVG graph, a route map with .md documentation, and support for the app router.
+This will generate an HTML file containing a comprehensive sitemap with a visual map of your routing architecture. It will include a downloadable PNG graph and detailed route documentation from any accompanying `.md` files, providing a clear and complete overview of your app's routing structure.
 
 ## License
 
