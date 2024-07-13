@@ -78,10 +78,10 @@ If the `onlyMarkdownFiles` option is set to `true`, only the routes or pages tha
 ## Example
 
 ```sh
-npx create-next-sitemap-docs --appPath "./src/app" --outputPath "./scripts/sitemap.html" --pageTitle "CONDOR DIGITAL SOLUTIONS"
+npx create-next-sitemap-docs --appPath "./src/app" --outputPath "./docs/sitemap.html" --pageTitle "CONDOR DIGITAL SOLUTIONS" --boxHeight 100
 ```
 
-This will generate an HTML file containing a comprehensive sitemap with a visual map of your routing architecture. It will include a downloadable PNG graph and detailed route documentation from any accompanying `.md` files, providing a clear and complete overview of your app's routing structure.
+This will generate an HTML documentation file containing a comprehensive sitemap with a visual map of your routing architecture. It will include a downloadable PNG graph and detailed route documentation from any accompanying `.md` files, providing a clear and complete overview of your app's routing structure.
 
 ## License
 
