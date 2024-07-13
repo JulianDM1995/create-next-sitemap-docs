@@ -1,6 +1,6 @@
 {
   "name": "create-next-sitemap-docss",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Generate sitemap documentation for Next.js projects including a downloadable SVG graph, route map with .md documentation, and support for app router.",
   "main": "src/main.js",
   "bin": {
