@@ -21,13 +21,11 @@ The recommended way to use this tool is by adding it to the `scripts` section of
 #### Example of Adding to package.json with Additional Parameters
 
 ```json
-{...
+{
   "scripts": {
-    ...,
-    "generate:sitemap": "npx create-next-sitemap-docs --appPath "./src/app/" --outputPath "./docs" --pageTitle "My Project Sitemap" --fontSize 24 --boxWidth 250 --boxHeight 60"
-    ...,
+    "generate:sitemap": "npx create-next-sitemap-docs --appPath \"./src/app\" --outputPath \"./docs/sitemap.html\" --pageTitle \"CONDOR DIGITAL SOLUTIONS\""
   }
-...}
+}
 ```
 
 #### Running the Script
