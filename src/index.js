@@ -57,15 +57,16 @@ function init() {
     pageTitle
   );
 
-  if (!outputPath.endsWith(".html")) {
-    outputPath = path.join(outputPath, "sitemap.html");
+  let formattedOutputPath = outputPath;
+  if (!formattedOutputPath.endsWith(".html")) {
+    formattedOutputPath = path.join(formattedOutputPath, "sitemap.html");
   }
-  const outputDir = path.dirname(outputPath);
+  const outputDir = path.dirname(formattedOutputPath);
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  fs.writeFileSync(outputPath, htmlContent);
+  fs.writeFileSync(formattedOutputPath, htmlContent);
   console.log(
     `✅ Sitemap documentation generated and saved at: ${outputPath} 🚀`
   );

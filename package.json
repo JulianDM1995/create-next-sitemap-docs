@@ -1,8 +1,8 @@
 {
   "name": "create-next-sitemap-docss",
-  "version": "0.0.9",
-  "description": "Generate sitemap documentation for Next.js projects including a downloadable SVG graph, route map with .md documentation, and support for app router.",
-  "main": "src/main.js",
+  "version": "0.0.10",
+  "description": "Generate detailed sitemap documentation for Next.js projects using the app router. This tool creates an HTML file featuring a visual map of your routing architecture along with detailed route documentation. It supports both page and route files (e.g., page.tsx, route.tsx) and can include additional documentation from accompanying page.md or route.md files. Ideal for maintaining scalable and comprehensive documentation for your Next.js application.",
+  "main": "src/index.js",
   "bin": {
     "create-next-sitemap-docs": "./bin/create-next-sitemap-docs.js"
   },
@@ -13,7 +13,13 @@
   "keywords": [
     "next.js",
     "sitemap",
-    "documentation"
+    "documentation",
+    "app router",
+    "nextjs",
+    "next",
+    "svg",
+    "routes",
+    "png"
   ],
   "author": "Julián Medina",
   "license": "ISC",
