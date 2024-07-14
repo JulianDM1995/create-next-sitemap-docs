@@ -91,5 +91,8 @@ export function findDefaultAppPath() {
       }
     }
   }
-  return process.cwd();
+  console.error(
+    "❌ No page or route files found in the specified directories (app, src/app). Please ensure you are in the root directory of your Next.js project or specify the correct app directory using the --appPath option. 🛑"
+  );
+  process.exit(1);
 }

@@ -1,6 +1,6 @@
 {
   "name": "create-next-sitemap-docss",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Generate detailed sitemap documentation for Next.js projects using the app router. This tool creates an HTML file featuring a visual map of your routing architecture along with detailed route documentation. It supports both page and route files (e.g., page.tsx, route.tsx) and can include additional documentation from accompanying page.md or route.md files. Ideal for maintaining scalable and comprehensive documentation for your Next.js application.",
   "main": "src/index.js",
   "bin": {
