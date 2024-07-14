@@ -8,13 +8,13 @@ Generate detailed sitemap documentation for your Next.js projects that use the a
 
 ### Using npx
 
-You can use the tool directly without installation via `npx`:
+To use the tool directly without installation, navigate to the root directory of your Next.js project and run:
 
 ```sh
 npx create-next-sitemap-docs
 ```
 
-Running the command without parameters in the root of your Next.js project will create a sitemap at `./docs/sitemap.html`.
+Running this command without any parameters will create a sitemap at `./docs/sitemap.html`.
 You can also change the input and output paths using the `--appPath` and `--outputPath` options.
 
 ### Recommended Method: Adding to package.json Scripts
