@@ -11,8 +11,11 @@ Generate detailed sitemap documentation for your Next.js projects that use the a
 You can use the tool directly without installation via `npx`:
 
 ```sh
-npx create-next-sitemap-docs --appPath "./src/app/" --outputPath "./docs"
+npx create-next-sitemap-docs
 ```
+
+Running the command without parameters in the root of your Next.js project will create a sitemap at `./docs/sitemap.html`.
+You can also change the input and output paths using the `--appPath` and `--outputPath` options.
 
 ### Recommended Method: Adding to package.json Scripts
 
@@ -23,7 +26,7 @@ The recommended way to use this tool is by adding it to the `scripts` section of
 ```json
 {
   "scripts": {
-    "generate:sitemap": "npx create-next-sitemap-docs --appPath \"./src/app\" --outputPath \"./docs/sitemap.html\" --pageTitle \"CONDOR DIGITAL SOLUTIONS\""
+    "generate:sitemap": "npx create-next-sitemap-docs --pageTitle \"CONDOR DIGITAL SOLUTIONS\""
   }
 }
 ```
@@ -44,7 +47,7 @@ yarn generate:sitemap
 
 ### Command Line Usage
 
-When you run the tool from the command line, it will recursively search through the directory specified in `appPath` to find all `page` and `route` files used by the Next.js app router (`page.tsx`, `page.jsx`, `page.js`, `route.tsx`, `route.jsx`, `route.js`). Once it identifies these files, it generates an HTML file that visually maps out the routing architecture of your application. This visual map helps in understanding the structure and flow of your app's routes.
+When you run the tool from the command line, it will recursively search through the directory specified in `--appPath` (./app or ./src/app by default) to find all `page` and `route` files used by the Next.js app router (`page.tsx`, `page.jsx`, `page.js`, `route.tsx`, `route.jsx`, `route.js`). Once it identifies these files, it generates an HTML file that visually maps out the routing architecture of your application. This visual map helps in understanding the structure and flow of your app's routes.
 
 ### Markdown Documentation
 

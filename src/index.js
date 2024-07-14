@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { listPaths } from "./fileUtils.js";
+import { findDefaultAppPath, listPaths } from "./fileUtils.js";
 import { formatPaths } from "./helpers.js";
 import { generateHTMLContent } from "./htmlGenerator.js";
 import { generateSVGContent } from "./svgGenerator.js";
@@ -16,9 +16,9 @@ function init() {
     }
   });
 
-  const appPath = argMap.appPath || process.cwd();
+  const appPath = argMap.appPath || findDefaultAppPath();
   const outputPath =
-    argMap.outputPath || path.join(process.cwd(), "./sitemap.html");
+    argMap.outputPath || path.join(process.cwd(), "./docs/sitemap.html");
   const onlyMarkdownFiles = argMap.onlyMarkdownFiles === "true";
   const pageTitle = argMap.pageTitle || "Next App Map";
   const fontSize = argMap.fontSize ? parseInt(argMap.fontSize) : 28;
