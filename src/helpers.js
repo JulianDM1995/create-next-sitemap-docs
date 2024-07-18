@@ -17,12 +17,10 @@ export function formatPaths(paths) {
     let type = ''
     const fileName = path.basename(item.fullPath)
     if (fileName.startsWith('route')) {
-      type += 'Route'
+      type = 'Route'
     } else if (fileName.startsWith('page')) {
-      type += 'Page'
+      type = 'Page'
     }
-
-    routeType += fileName
 
     return { ...item, formattedPath, type, routeType }
   })
