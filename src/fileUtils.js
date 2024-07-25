@@ -26,9 +26,8 @@ export function listPaths(dir, onlyMarkdownFiles, baseDir = null, fileList = [])
       const formattedPath = directoryPath === '.' ? '/' : `/${directoryPath}`
 
       // Check if there's a corresponding markdown file
-      const mdFilePathPage = path.join(path.dirname(filePath), 'page.md')
-      const mdFilePathRoute = path.join(path.dirname(filePath), 'route.md')
-      if (onlyMarkdownFiles && !fs.existsSync(mdFilePathPage) && !fs.existsSync(mdFilePathRoute)) {
+      const mdFilePathPage = path.join(path.dirname(filePath), 'sitemap.md')
+      if (onlyMarkdownFiles && !fs.existsSync(mdFilePathPage)) {
         // Skip if onlyMarkdownFiles is true and no corresponding markdown file exists
         return
       }
@@ -40,15 +39,10 @@ export function listPaths(dir, onlyMarkdownFiles, baseDir = null, fileList = [])
 }
 
 export function getFileContent(fullPath) {
-  const markdownFilePathPage = path.join(path.dirname(fullPath), 'page.md')
-  const markdownFilePathRoute = path.join(path.dirname(fullPath), 'route.md')
+  const markdownFilePathPage = path.join(path.dirname(fullPath), 'sitemap.md')
   let fileContent
   if (fs.existsSync(markdownFilePathPage)) {
     fileContent = fs.readFileSync(markdownFilePathPage, 'utf-8')
-    let converter = new showdown.Converter()
-    fileContent = converter.makeHtml(fileContent)
-  } else if (fs.existsSync(markdownFilePathRoute)) {
-    fileContent = fs.readFileSync(markdownFilePathRoute, 'utf-8')
     let converter = new showdown.Converter()
     fileContent = converter.makeHtml(fileContent)
   } else {

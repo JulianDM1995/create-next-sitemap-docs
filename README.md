@@ -1,6 +1,6 @@
 # create-next-sitemap-docs
 
-Generate detailed sitemap documentation for your Next.js projects that use the app router. This tool creates a comprehensive HTML file featuring a visual map of your routing architecture along with detailed route documentation. It is designed to maintain scalable documentation compatible with the app router by leveraging the same system and requiring users to have a `page.md` or `route.md` file in the same directory as their Next.js `page` or `route` files. Ideal for both small projects and large applications, `create-next-sitemap-docs` helps you visualize and maintain your app's routing structure effectively.
+Generate detailed sitemap documentation for your Next.js projects that use the app router. This tool creates a comprehensive HTML file featuring a visual map of your routing architecture along with detailed route documentation. It is designed to maintain scalable documentation compatible with the app router by leveraging the same system and requiring users to have a `sitemap.md` file in the same directory as their Next.js `page` or `route` files. Ideal for both small projects and large applications, `create-next-sitemap-docs` helps you visualize and maintain your app's routing structure effectively.
 
 ![Banner](./assets/banner.gif)
 
@@ -51,7 +51,7 @@ When you run the tool from the command line, it will recursively search through 
 
 ### Markdown Documentation
 
-For each `page` or `route` file, if there is a corresponding `page.md` or `route.md` file in the same directory, the tool will automatically include the content of these markdown files in the generated HTML documentation. This ensures that the visual representation of the routing architecture is accompanied by detailed and specific documentation, making it easier to understand and navigate your codebase.
+For each `page` or `route` file, if there is a corresponding `sitemap.md` file in the same directory, the tool will automatically include the content of these markdown files in the generated HTML documentation. This ensures that the visual representation of the routing architecture is accompanied by detailed and specific documentation, making it easier to understand and navigate your codebase.
 
 If the `onlyMarkdownFiles` option is set to `true`, only the routes or pages that have a corresponding `.md` file will be documented. If set to `false` (the default), the tool will use the entire content of the route file (e.g., `page.tsx`) in the documentation, ensuring that all routes are included even if no markdown file is present.
 
