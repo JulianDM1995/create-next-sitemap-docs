@@ -38,6 +38,7 @@ function init() {
   const formattedPaths = formatPaths(pathsList)
 
   const svgContent = generateSVGContent(
+    appPath,
     formattedPaths,
     boxWidth,
     boxHeight,
