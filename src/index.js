@@ -20,13 +20,60 @@ function init() {
   const outputPath = argMap.outputPath || path.join(process.cwd(), './docs/sitemap.html')
   const onlyMarkdownFiles = argMap.onlyMarkdownFiles === 'true'
   const pageTitle = argMap.pageTitle || 'Next App Map'
-  const fontSize = argMap.fontSize ? parseInt(argMap.fontSize) : 28
   const boxWidth = argMap.boxWidth ? parseInt(argMap.boxWidth) : 350
   const boxHeight = argMap.boxHeight ? parseInt(argMap.boxHeight) : 50
   const boxRadius = argMap.boxRadius ? parseInt(argMap.boxRadius) : 4
   const tabWidth = argMap.tabWidth ? parseInt(argMap.tabWidth) : 60
   const verticalGap = argMap.verticalGap ? parseInt(argMap.verticalGap) : 20
   const barGap = argMap.barPosition ? parseInt(argMap.barGap) : 30
+
+  const rectStyles = argMap['rectStyles']
+    ? JSON.parse(argMap['rectStyles'])
+    : {
+        'page-static': argMap['rectStyle'] || 'fill:#BDE3FE',
+        'route-static': argMap['rectStyle'] || 'fill:#FFE8A3',
+        'page-dynamic': argMap['rectStyle'] || 'fill:#BDE3FE',
+        'route-dynamic': argMap['rectStyle'] || 'fill:#FFE8A3',
+        'page-catch-all': argMap['rectStyle'] || 'fill:#BDE3FE',
+        'route-catch-all': argMap['rectStyle'] || 'fill:#FFE8A3',
+      }
+
+  const lineStyles = argMap['lineStyles']
+    ? JSON.parse(argMap['lineStyles'])
+    : {
+        'page-static': argMap['lineStyle'] || 'stroke:#21B4FD;stroke-width:3',
+        'route-static': argMap['lineStyle'] || 'stroke:#DDBC22;stroke-width:3',
+        'page-dynamic':
+          argMap['lineStyle'] || 'stroke:#21B4FD;stroke-width:3;stroke-dasharray:10,10',
+        'route-dynamic':
+          argMap['lineStyle'] || 'stroke:#DDBC22;stroke-width:3;stroke-dasharray:10,10',
+        'page-catch-all':
+          argMap['lineStyle'] || 'stroke:#21B4FD;stroke-width:3;stroke-dasharray:5,5',
+        'route-catch-all':
+          argMap['lineStyle'] || 'stroke:#DDBC22;stroke-width:3;stroke-dasharray:5,5',
+      }
+
+  const textStyles = argMap['textStyles']
+    ? JSON.parse(argMap['textStyles'])
+    : {
+        'page-static': argMap['textStyle'] || 'fill:#332F22',
+        'route-static': argMap['textStyle'] || 'fill:#332F22',
+        'page-dynamic': argMap['textStyle'] || 'fill:#332F22',
+        'route-dynamic': argMap['textStyle'] || 'fill:#332F22',
+        'page-catch-all': argMap['textStyle'] || 'fill:#332F22',
+        'route-catch-all': argMap['textStyle'] || 'fill:#332F22',
+      }
+
+  const fontSizes = argMap['fontSizes']
+    ? JSON.parse(argMap['fontSizes'])
+    : {
+        'page-static': argMap['fontSize'] ? parseInt(argMap['fontSize']) : 24,
+        'route-static': argMap['fontSize'] ? parseInt(argMap['fontSize']) : 24,
+        'page-dynamic': argMap['fontSize'] ? parseInt(argMap['fontSize']) : 24,
+        'route-dynamic': argMap['fontSize'] ? parseInt(argMap['fontSize']) : 24,
+        'page-catch-all': argMap['fontSize'] ? parseInt(argMap['fontSize']) : 24,
+        'route-catch-all': argMap['fontSize'] ? parseInt(argMap['fontSize']) : 24,
+      }
 
   const pathsList = listPaths(appPath, onlyMarkdownFiles)
 
@@ -38,7 +85,6 @@ function init() {
   const formattedPaths = formatPaths(pathsList)
 
   const svgContent = generateSVGContent(
-    appPath,
     formattedPaths,
     boxWidth,
     boxHeight,
@@ -46,7 +92,10 @@ function init() {
     tabWidth,
     verticalGap,
     barGap,
-    fontSize,
+    fontSizes,
+    rectStyles,
+    lineStyles,
+    textStyles,
   )
 
   const htmlContent = generateHTMLContent(formattedPaths, svgContent, pageTitle)

@@ -86,6 +86,106 @@ npx create-next-sitemap-docs --appPath "./src/app" --outputPath "./docs/sitemap.
 
 This will generate an HTML documentation file containing a comprehensive sitemap with a visual map of your routing architecture. It will include a downloadable PNG graph and detailed route documentation from any accompanying `.md` files, providing a clear and complete overview of your app's routing structure.
 
+## Style Parameters
+
+### Rect Styles
+
+Controls the fill styles for the rectangles in the SVG graph.
+
+| Option         | Type   | Default                                | Description                                 |
+| -------------- | ------ | -------------------------------------- | ------------------------------------------- |
+| `--rectStyles` | Object | See individual `rectStyle` parameters. | Styles for the rectangles in the SVG graph. |
+| `--rectStyle`  | String | 'fill:#BDE3FE'                         | Default fill style for rectangles.          |
+
+Example:
+
+```json
+{
+  "page-static": "fill:#BDE3FE",
+  "route-static": "fill:#FFE8A3",
+  "page-dynamic": "fill:#BDE3FE",
+  "route-dynamic": "fill:#FFE8A3",
+  "page-catch-all": "fill:#BDE3FE",
+  "route-catch-all": "fill:#FFE8A3"
+}
+```
+
+### Line Styles
+
+Controls the stroke styles for the lines in the SVG graph.
+
+| Option         | Type   | Default                                | Description                            |
+| -------------- | ------ | -------------------------------------- | -------------------------------------- |
+| `--lineStyles` | Object | See individual `lineStyle` parameters. | Styles for the lines in the SVG graph. |
+| `--lineStyle`  | String | 'stroke:#21B4FD;stroke-width:3'        | Default stroke style for lines.        |
+
+Example:
+
+```json
+{
+  "page-static": "stroke:#21B4FD;stroke-width:3",
+  "route-static": "stroke:#DDBC22;stroke-width:3",
+  "page-dynamic": "stroke:#21B4FD;stroke-width:3;stroke-dasharray:10,10",
+  "route-dynamic": "stroke:#DDBC22;stroke-width:3;stroke-dasharray:10,10",
+  "page-catch-all": "stroke:#21B4FD;stroke-width:3;stroke-dasharray:5,5",
+  "route-catch-all": "stroke:#DDBC22;stroke-width:3;stroke-dasharray:5,5"
+}
+```
+
+### Text Styles
+
+Controls the fill styles for the text in the SVG graph.
+
+| Option         | Type   | Default                                | Description                           |
+| -------------- | ------ | -------------------------------------- | ------------------------------------- |
+| `--textStyles` | Object | See individual `textStyle` parameters. | Styles for the text in the SVG graph. |
+| `--textStyle`  | String | 'fill:#332F22'                         | Default fill style for text.          |
+
+Example:
+
+```json
+{
+  "page-static": "fill:#332F22",
+  "route-static": "fill:#332F22",
+  "page-dynamic": "fill:#332F22",
+  "route-dynamic": "fill:#332F22",
+  "page-catch-all": "fill:#332F22",
+  "route-catch-all": "fill:#332F22"
+}
+```
+
+### Font Sizes
+
+Controls the font sizes for the text in the SVG graph.
+
+| Option        | Type   | Default                               | Description                                      |
+| ------------- | ------ | ------------------------------------- | ------------------------------------------------ |
+| `--fontSizes` | Object | See individual `fontSize` parameters. | Font sizes for different types in the SVG graph. |
+| `--fontSize`  | Number | 24                                    | Default font size for text.                      |
+
+Example:
+
+```json
+{
+  "page-static": 24,
+  "route-static": 24,
+  "page-dynamic": 24,
+  "route-dynamic": 24,
+  "page-catch-all": 24,
+  "route-catch-all": 24
+}
+```
+
+## Example
+
+To generate a sitemap with customized SVG styles, you can use the following command:
+
+```sh
+npx create-next-sitemap-docs --rectStyles '{"page-static":"fill:#FFCDD2","route-static":"fill:#FFE0B2","page-dynamic":"fill:#E1BEE7","route-dynamic":"fill:#C5CAE9","page-catch-all":"fill:#BBDEFB","route-catch-all":"fill:#C8E6C9"}' --lineStyles '{"page-static":"stroke:#E57373;stroke-width:3","route-static":"stroke:#FFB74D;stroke-width:3","page-dynamic":"stroke:#BA68C8;stroke-width:3;stroke-dasharray:10,10","route-dynamic":"stroke:#7986CB;stroke-width:3;stroke-dasharray:10,10","page-catch-all":"stroke:#64B5F6;stroke-width:3;stroke-dasharray:5,5","route-catch-all":"stroke:#81C784;stroke-width:3;stroke-dasharray:5,5"}' --textStyles '{"page-static":"fill:#3E2723","route-static":"fill:#5D4037","page-dynamic":"fill:#7B5E57","route-dynamic":"fill:#8D6E63","page-catch-all":"fill:#A1887F","route-catch-all":"fill:#BCAAA4"}' --fontSizes '{"page-static":18,"route-static":18,"page-dynamic":18,"route-dynamic":18,"page-catch-all":18,"route-catch-all":18}'
+```
+
+This command will generate an HTML documentation file containing a comprehensive sitemap with a visual map of your routing architecture, using the specified styles for the SVG elements.
+
 ## License
 
 ISC

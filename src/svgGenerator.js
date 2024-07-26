@@ -1,5 +1,4 @@
 export function generateSVGContent(
-  appPath,
   paths,
   boxWidth,
   boxHeight,
@@ -8,8 +7,10 @@ export function generateSVGContent(
   verticalGap,
   barGap,
   fontSize,
+  rectStyles,
+  lineStyles,
+  textStyles,
 ) {
-  console.log({ paths })
   const listOfPaths = paths.map((p) => p.path)
   const indentedLabels = indentPaths(paths)
   const collapsedIndentedLabels = collapseIndentedLabels(indentedLabels, listOfPaths)
@@ -24,6 +25,9 @@ export function generateSVGContent(
     verticalGap,
     barGap,
     fontSize,
+    rectStyles,
+    lineStyles,
+    textStyles,
   )
 }
 
@@ -122,25 +126,31 @@ function createSVGFigures(
   tabWidth,
   verticalGap,
   barGap,
-  fontSize,
+  fontSizes,
+  rectStyles,
+  lineStyles,
+  textStyles,
 ) {
   const margin = 10
   const maxDepth = Math.max(...indentedLabelsObject.map((item) => item.indentation))
   const svgHeight = indentedLabelsObject.length * (boxHeight + verticalGap) + margin * 2
   const svgWidth = boxWidth + maxDepth * tabWidth + margin * 2
 
-  let svgFigures = `<svg class="sitemap" xmlns="http://www.w3.org/2000/svg" width="${svgWidth}" height="${svgHeight}" style="font-family: Arial, sans-serif; font-size: ${fontSize}px; display: block; margin: 10px auto;">`
+  let svgFigures = `<svg class="sitemap" xmlns="http://www.w3.org/2000/svg" width="${svgWidth}" height="${svgHeight}" style="font-family: Arial, sans-serif; display: block; margin: 10px auto;">`
   let yPosition = margin
 
   const indentationLevels = {}
   indentedLabelsObject.forEach((item, index) => {
+    const type = `${item.type}-${item.routeType}`.toLowerCase()
+
     const xPosition = item.indentation * tabWidth + margin
-    const textXPosition = xPosition + 10
+    const textXPosition = xPosition + 12
     const textYPosition = yPosition + boxHeight / 2
 
-    const rectStyle = 'fill:white;stroke:black;stroke-width:2'
-    const lineStyle = 'stroke:black;stroke-width:2'
-    const textAnchor = item.label === '/' ? 'middle' : 'left'
+    const rectStyle = `${rectStyles[type]};${lineStyles[type]}`
+    const lineStyle = lineStyles[type]
+    const textStyle = textStyles[type]
+    const fontSize = fontSizes[type]
 
     if (!indentationLevels[item.indentation]) {
       indentationLevels[item.indentation] = []
@@ -154,7 +164,7 @@ function createSVGFigures(
       item.id
     }');" style="cursor:pointer;">
         <rect x="${xPosition}" y="${yPosition}" width="${boxWidth}" height="${boxHeight}" rx="${boxRadius}" ry="${boxRadius}" style="${rectStyle}" />
-        <text x="${textXPosition}" y="${textYPosition}" text-anchor="${textAnchor}" alignment-baseline="middle">${
+        <text x="${textXPosition}" y="${textYPosition}" alignment-baseline="middle" style="${textStyle}; font-size:${fontSize}px;">${
       item.label
     }</text>
         ${
